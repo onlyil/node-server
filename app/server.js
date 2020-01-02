@@ -13,6 +13,7 @@ const start = (route) => {
             console.log(err)
         }
         console.log(`HTTP server is runing on ${port}`)
+        process.send('ready')
     })
 
     // apps.listen(443, (err) => {

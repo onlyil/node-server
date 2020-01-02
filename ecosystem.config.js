@@ -1,14 +1,12 @@
 module.exports = {
     apps: [{
-        name: 'API',
-        script: 'app.js',
-
-        // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
-        args: 'one two',
+        name: 'node-app',
+        script: 'app/index.js',
+        args: '',
         instances: 1,
-        autorestart: true,
-        watch: false,
-        max_memory_restart: '1G',
+        watch: true,
+        max_memory_restart: '100M',
+        listen_timeout: 3000,
         env: {
             NODE_ENV: 'development'
         },
@@ -22,7 +20,7 @@ module.exports = {
             user: 'node',
             host: '212.83.163.1',
             ref: 'origin/master',
-            repo: 'git@github.com:repo.git',
+            repo: 'https://github.com/onlyil/node-server.git',
             path: '/var/www/production',
             'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
         }
